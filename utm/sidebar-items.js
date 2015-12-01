@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["to_utm_wgs84","Convert a latitude and longitude to UTM coordinates using the WGS84 ellipsoid."]],"struct":[["Degrees","Degrees."],["Ellipsoid",""],["Radians","Radians."]]});
