@@ -187,7 +187,7 @@
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>to_utm_wgs84</span>(<span class='ident'>latitude</span>: <span class='ident'>f64</span>, <span class='ident'>longitude</span>: <span class='ident'>f64</span>, <span class='ident'>zone</span>: <span class='ident'>u8</span>) <span class='op'>-&gt;</span> (<span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>) {
     <span class='kw'>let</span> <span class='ident'>latitude</span> <span class='op'>=</span> <span class='ident'>latitude</span> <span class='op'>*</span> <span class='ident'>PI</span> <span class='op'>/</span> <span class='number'>180.0</span>;
     <span class='kw'>let</span> <span class='ident'>longitude</span> <span class='op'>=</span> <span class='ident'>longitude</span> <span class='op'>*</span> <span class='ident'>PI</span> <span class='op'>/</span> <span class='number'>180.0</span>;
-    <span class='ident'>radians_to_utm_wgs64</span>(<span class='ident'>latitude</span>, <span class='ident'>longitude</span>, <span class='ident'>zone</span>) 
+    <span class='ident'>radians_to_utm_wgs84</span>(<span class='ident'>latitude</span>, <span class='ident'>longitude</span>, <span class='ident'>zone</span>) 
 }
 
 <span class='doccomment'>/// Converts a latitude and longitude in radians to UTM coordinates using the WGS84 ellipsoid.</span>
@@ -196,12 +196,12 @@
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```</span>
 <span class='doccomment'>/// use std::f64::consts::PI;</span>
-<span class='doccomment'>/// use utm::to_utm_wgs84;</span>
+<span class='doccomment'>/// use utm::radians_to_utm_wgs84;</span>
 <span class='doccomment'>/// let latitude = 40.62 * PI / 180.0;</span>
 <span class='doccomment'>/// let longitude = -123.45 * PI / 180.0;</span>
-<span class='doccomment'>/// let (northing, easting, meridian_convergence) = to_utm_wgs84(latitude, longitude, 10);</span>
+<span class='doccomment'>/// let (northing, easting, meridian_convergence) = radians_to_utm_wgs84(latitude, longitude, 10);</span>
 <span class='doccomment'>/// ```</span>
-<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>radians_to_utm_wgs64</span>(<span class='ident'>latitude</span>: <span class='ident'>f64</span>, <span class='ident'>longitude</span>: <span class='ident'>f64</span>, <span class='ident'>zone</span>: <span class='ident'>u8</span>) <span class='op'>-&gt;</span> (<span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>) {
+<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>radians_to_utm_wgs84</span>(<span class='ident'>latitude</span>: <span class='ident'>f64</span>, <span class='ident'>longitude</span>: <span class='ident'>f64</span>, <span class='ident'>zone</span>: <span class='ident'>u8</span>) <span class='op'>-&gt;</span> (<span class='ident'>f64</span>, <span class='ident'>f64</span>, <span class='ident'>f64</span>) {
     <span class='kw'>let</span> <span class='ident'>ellipsoid</span> <span class='op'>=</span> <span class='ident'>WGS84</span>;
     <span class='kw'>let</span> <span class='ident'>long_origin</span> <span class='op'>=</span> <span class='ident'>zone</span> <span class='kw'>as</span> <span class='ident'>f64</span> <span class='op'>*</span> <span class='number'>6.0</span> <span class='op'>-</span> <span class='number'>183.0</span>;
     <span class='kw'>let</span> <span class='ident'>e2</span> <span class='op'>=</span> <span class='number'>2.0</span> <span class='op'>*</span> <span class='ident'>ellipsoid</span>.<span class='ident'>f</span> <span class='op'>-</span> <span class='ident'>ellipsoid</span>.<span class='ident'>f</span> <span class='op'>*</span> <span class='ident'>ellipsoid</span>.<span class='ident'>f</span>;
